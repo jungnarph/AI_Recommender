@@ -32,7 +32,7 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback_dev_secret')
 # DEBUG = False
-ALLOWED_HOSTS = ['https://ai-recommender-jungnar-v1.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ai-recommender-jungnar-v1.onrender.com', 'localhost', '127.0.0.1']
 
 OPENAI_KEY = os.environ.get('OPENAI_KEY')
 MONGO_URI = os.environ.get('MONGO_URI')
