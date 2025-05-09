@@ -25,8 +25,17 @@ SECRET_KEY = 'django-insecure-i*pob+0vr!swglxf&ed_@%45n%t6r#k5)z17ll9mf*5^vy@jn)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback_dev_secret')
+# DEBUG = False
+ALLOWED_HOSTS = ['https://ai-recommender-jungnar-v1.onrender.com', 'localhost', '127.0.0.1']
+
+OPENAI_KEY = os.environ.get('OPENAI_KEY')
+MONGO_URI = os.environ.get('MONGO_URI')
 
 # Application definition
 
@@ -79,7 +88,7 @@ DATABASES = {
         'NAME': 'ecommerce_db',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://mdjbucad:KnPLwVbHtAV6UoEn@cluster0.ubcpuga.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+            'host': MONGO_URI,
         }
     }
 }

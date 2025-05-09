@@ -7,11 +7,18 @@
 </head>
 <body>
     <h1>Product List</h1>
-    <ul>
-        {% for product in products %}
-            <li>{{ product.name }} - &#8369;{{ product.price }}</li>
-        {% endfor %}
-    </ul>
+    {% for product in products %}
+        <div class="product">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p><strong>Tags:</strong></p>
+            <ul>
+                {% for tag in product.tags %}
+                    <li>{{ tag }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
     <a href="{% url 'add_product' %}">Add Product</a>
     <h2>Recommended Products</h2>
 </body>
